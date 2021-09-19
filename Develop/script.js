@@ -8,11 +8,12 @@ var upperCaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberCharacters = "0123456789";
 var specialCharacters = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 var passwordCharacters = "";
+var userLength = "";
 
 
 var passwordLength = function () {
   //ask person for length of password
-  var userLength = window.prompt("Please enter a number between 8-128 for your password length");
+  userLength = window.prompt("Please enter a number between 8-128 for your password length");
   userLength = parseInt(userLength);
   console.log(userLength);
 
@@ -23,6 +24,7 @@ if (userLength < 8 || userLength > 128) {
   }
 
   //ask for which character types to use
+
 if (userLength >= 8 || userLength <= 128) {
   var userUpperCase = confirm("Do you want uppercase letters in your password?");
 if (userUpperCase === true) {
@@ -33,7 +35,7 @@ if (userUpperCase === true) {
   if (userLowerCase === true) {
     passwordCharacters = passwordCharacters + lowerCaseCharacters;
   }
-  
+
   var userNumbers = confirm("Do you want numbers in your password?");
   if (userNumbers === true) {
     passwordCharacters = passwordCharacters + numberCharacters;
@@ -50,13 +52,13 @@ if (userUpperCase != true && userLowerCase != true && userNumbers != true && use
 }
 };
 
+//generates the password by using inputted length and characters indicated
 var generatePassword = function() {
     var length = userLength;
     console.log(length);
-    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
     retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-      retVal += charset.charAt(Math.floor(Math.random() * n));
+    for (var i = 0, n = passwordCharacters.length; i < length; ++i) {
+      retVal += passwordCharacters.charAt(Math.floor(Math.random() * n));
     }
    return retVal;
 }
