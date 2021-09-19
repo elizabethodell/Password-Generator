@@ -21,9 +21,11 @@ var passwordLength = function () {
 if (userLength < 8 || userLength > 128) {
   window.alert("Please enter a number 8-128.");
   return passwordLength();
-  }
+}
+};
 
   //ask for which character types to use
+  var passwordChars = function () {
 
 if (userLength >= 8 || userLength <= 128) {
   var userUpperCase = confirm("Do you want uppercase letters in your password?");
@@ -49,6 +51,7 @@ if (userUpperCase === true) {
 //validates answer
 if (userUpperCase != true && userLowerCase != true && userNumbers != true && userSymbols != true){
   window.alert("Please select one character type.");
+  return passwordChars();
 }
 };
 
@@ -67,6 +70,7 @@ var generatePassword = function() {
 // Write password to the #password input
 function writePassword() {
   passwordLength();
+  passwordChars();
   var password = generatePassword() 
   var passwordText = document.querySelector("#password");
 
