@@ -17,7 +17,7 @@ var passwordLength = function () {
   userLength = parseInt(userLength);
   console.log(userLength);
 
-//validate answer
+//validate answer and if not returns to prompt
 if (userLength < 8 || userLength > 128) {
   window.alert("Please enter a number 8-128.");
   return passwordLength();
@@ -25,30 +25,36 @@ if (userLength < 8 || userLength > 128) {
 };
 
   //ask for which character types to use
-  var passwordChars = function () {
-
+var passwordChars = function () {
+//confirm the password is the correct length
 if (userLength >= 8 || userLength <= 128) {
+  
+
   var userUpperCase = confirm("Do you want uppercase letters in your password?");
-if (userUpperCase === true) {
+  //add to characters used if selected
+  if (userUpperCase === true) {
   passwordCharacters = passwordCharacters + upperCaseCharacters;
 }
 
   var userLowerCase = confirm("Do you want lowercase letters in your password?");
+  //add to characters used if selected
   if (userLowerCase === true) {
     passwordCharacters = passwordCharacters + lowerCaseCharacters;
   }
 
   var userNumbers = confirm("Do you want numbers in your password?");
+  //add to characters used if selected
   if (userNumbers === true) {
     passwordCharacters = passwordCharacters + numberCharacters;
   }
   var userSymbols = confirm("Do you want symbols in your password?");
+ //add to characters used if selected
   if (userSymbols === true) {
     passwordCharacters = passwordCharacters + specialCharacters;
   }
   console.log(passwordCharacters);
 }
-//validates answer
+//validates answer and if not returns to restart prompt
 if (userUpperCase != true && userLowerCase != true && userNumbers != true && userSymbols != true){
   window.alert("Please select one character type.");
   return passwordChars();
